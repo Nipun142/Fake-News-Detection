@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="a"></div>
+    <div class="b">
+        <br><br>
+        <div class="f"><u>Fake News Detection</u></div>
+
+        <form method="POST">
+            <input name="text" type="text" placeholder="Enter Sentence" class="t1" required><br>
+            <input type="submit" value="Check News Authenticity" class="b1"><br>
+        </form>
+
+        <table class="tb1">
+            <tr>
+                <td><i class="fa-regular fa-square-check fa-2xl" style="color: #0f821c;"></i><span class="x">REAL</span></td>
+                <td><i class="fa-solid fa-slash fa-rotate-90 fa-2xl" style="color: coral;"></i></td>
+                <td><i class="fa-regular fa-square-xmark fa-xl" style="color: #f90126;"></i><span class="x">FAKE</span></td>
+            </tr>
+        </table>
+
+        <b class="u">Output:</b>
+        <input type="text" value="{{ prediction }}" class="l1" readonly><br>
+
+        <b class="u">Confidence Score:</b>
+        <input type="text" value="{{ confidence }}" class="l2" readonly>
+    </div>
+</body>
+<style>
+    body {
+        background-image: linear-gradient(to right, rgb(35, 85, 223), rgb(124, 201, 213), white);
+    }
+
+    ::placeholder {
+        padding-left: 4%;
+        font-size: 15px;
+    }
+
+    .a {
+        background-color: white;
+        width: 40%;
+        height: 75%;
+        position: absolute;
+        left: 400px;
+        top: 80px;
+        opacity: 0.4;
+        border-radius: 10%;
+    }
+
+    .b {
+        width: 40%;
+        height: 75%;
+        position: absolute;
+        left: 400px;
+        top: 80px;
+        border-radius: 10px;
+    }
+
+    .t1 {
+        margin-top: 8%;
+        margin-left: 15%;
+        width: 70%;
+        height: 10%;
+        background: transparent;
+        border: none;
+        border-radius: 5px;
+        border-bottom: 3px solid rgb(35, 85, 223);
+    }
+
+    .b1 {
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 35%;
+        height: 6%;
+        background-color: coral;
+        color: white;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .f {
+        margin-left: 22%;
+        font-family: "Abril Fatface", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 30px;
+        color: rgb(21, 75, 222);
+    }
+
+    .tb1 {
+        width: 50%;
+        height: 5%;
+        text-align: center;
+        margin-top: 7%;
+        margin-left: 12%;
+        margin-bottom: 5%;
+    }
+
+    .l1 {
+        margin-left: 16.5%;
+        height: 30px;
+        border-radius: 3px;
+        border: 1px solid cornflowerblue;
+    }
+
+    .l2 {
+        margin-left: 2%;
+        height: 30px;
+        border-radius: 3px;
+        border: 1px solid cornflowerblue;
+    }
+
+    .u {
+        margin-top: 5%;
+        margin-left: 15%;
+        font-size: medium;
+        font-weight: 450;
+        color: black;
+        display: block;
+    }
+</style>
+</html>
