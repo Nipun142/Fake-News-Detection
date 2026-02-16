@@ -1,5 +1,43 @@
-# 📰 Fake News Detection using Machine Learning
+# 📌 Fake News Detection using Machine Learning
 
-This project is a simple machine learning-based web app built with Flask that predicts whether a given news headline/text is **real** or **fake**. The model is trained using labeled news data and uses vectorization techniques to process input text.
+An AI-based web application that classifies news content as Real or Fake using Machine Learning and NLP techniques.
+The system supports text input as well as speech-to-text input via the browser.
 
-This branch is for Working and training models on multiple datasets
+# 🚀 Features
+
+Fake news classification using ML
+
+Confidence score for predictions
+
+Clean and responsive UI
+
+Speech-to-text input (Chrome / Edge)
+
+Flask-based backend
+
+# 🔧 Installation & Setup
+
+1️⃣ Clone the repository
+
+git clone https://github.com/Nipun142/Fake-News-Detection.git
+cd Fake-News-Detection
+
+2️⃣ Create a virtual environment (recommended)
+
+Windows
+
+    python -m venv venv
+    venv\Scripts\activate
+
+Linux / macOS
+
+    python3 -m venv venv
+    source venv/bin/activate
+
+3️⃣ Install dependencies
+
+pip install -r requirements.txt
+
+▶️ Running the Application
+
+python app.py
