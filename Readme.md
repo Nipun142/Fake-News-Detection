@@ -18,7 +18,6 @@ Flask-based backend
 # 🔧 Installation & Setup
 
 1️⃣ Clone the repository
-
 git clone https://github.com/Nipun142/Fake-News-Detection.git
 cd Fake-News-Detection
 
@@ -26,18 +25,16 @@ cd Fake-News-Detection
 
 Windows
 
-    python -m venv venv
-    venv\Scripts\activate
+python -m venv venv
+venv\Scripts\activate
 
 Linux / macOS
 
-    python3 -m venv venv
-    source venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 
 3️⃣ Install dependencies
-
 pip install -r requirements.txt
 
 ▶️ Running the Application
-
 python app.py
