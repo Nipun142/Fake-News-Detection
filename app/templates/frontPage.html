@@ -10,12 +10,18 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+       </style>
   </head>
   <body>
     <div class="px-4 pt-4 text-center ">
-      <h1 class="display-4 fw-bold text-body-emphasis">Fake News Detection</h1>
+      <h1 class="fw-bold text-body-emphasis">Fake News Detection</h1>
       <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">
+        <p class="text-muted mb-4">
           An AI-based system to classify news content as Real or Fake using
           Machine Learning.
         </p>
@@ -24,28 +30,37 @@
       </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 py-5">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <div class="card shadow-sm border-0">
+          <div class="card shadow-lg border-0">
             <div class="card-body p-4">
               <h5 class="card-title text-center mb-3">
                 Check News Authenticity
               </h5>
 
               <form method="POST">
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    name="text"
-                    class="form-control"
-                    placeholder="Enter news statement..."
-                    required
-                  />
-                </div>
+                <div class="input-group mb-3">
+  <input
+  type="text"
+  id="speechText"
+  name="text"
+  class="form-control"
+  placeholder="Enter or speak news..."
+  required
+/>
+
+  <button
+  type="button"
+  id="micBtn"
+  class="btn btn-outline-secondary"
+  onclick="toggleMic()">
+  🎤
+</button>
+</div>
 
                 <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary btn-lg w-100">
                     Analyze News
                   </button>
                 </div>
@@ -79,22 +94,7 @@
 </div>
 {% endif %}
 
-<div class="container my-5">
-  <div class="row text-center">
-    <div class="col-md-4">
-      <h6>Input News</h6>
-      <p class="text-muted small">User enters a news statement</p>
-    </div>
-    <div class="col-md-4">
-      <h6>ML Processing</h6>
-      <p class="text-muted small">Text is analyzed using NLP</p>
-    </div>
-    <div class="col-md-4">
-      <h6>Prediction</h6>
-      <p class="text-muted small">Model classifies Real or Fake</p>
-    </div>
-  </div>
-</div>
+
 
 
             </div>
@@ -106,6 +106,58 @@
     <footer class="text-center text-muted py-3">
   <small>Fake News Detection • Machine Learning Project</small>
 </footer>
+
+
+<script>
+  let recognition;
+  let isListening = false;
+
+  function toggleMic() {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Speech recognition not supported. Use Chrome or Edge.");
+      return;
+    }
+
+    if (!recognition) {
+      recognition = new webkitSpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onresult = function (event) {
+        document.getElementById("speechText").value =
+          event.results[0][0].transcript;
+      };
+
+      recognition.onerror = function (event) {
+        console.error("Speech error:", event.error);
+        stopListening();
+      };
+
+      recognition.onend = function () {
+        stopListening();
+      };
+    }
+
+    if (!isListening) {
+      recognition.start();
+      isListening = true;
+      document.getElementById("micBtn").innerText = "🎙️ Listening...";
+      document.getElementById("micBtn").classList.add("btn-danger");
+    } else {
+      recognition.stop();
+      stopListening();
+    }
+  }
+
+  function stopListening() {
+    isListening = false;
+    document.getElementById("micBtn").innerText = "🎤";
+    document.getElementById("micBtn").classList.remove("btn-danger");
+  }
+</script>
+
+
 
   </body>
 </html>
