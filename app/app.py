@@ -11,12 +11,12 @@ nltk.download('stopwords')
 app = Flask(__name__)
 
 # Load the vectorizer and model once when app starts
-with open("model/vectorizer.pkl", "rb") as f:
+with open("../model/vectorizer.pkl", "rb") as f:
     vectorizer = pickle.load(f)
 
 print("Vocabulary size:", len(vectorizer.vocabulary_))
 
-with open("model/model.pkl", "rb") as f:
+with open("../model/model.pkl", "rb") as f:
     model = pickle.load(f)
 
 stemmer = PorterStemmer()
